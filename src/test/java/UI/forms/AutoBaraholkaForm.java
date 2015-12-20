@@ -183,6 +183,7 @@ public class AutoBaraholkaForm extends BaseForm {
      * @param maxMileage максимальнвый пробег
      */
     public void assertSearchResults(String expectedManufacturer, int minPrice, int maxPrice, int minYear, int maxYear, int maxMileage ){
+        waitForJQuery();
         int j = countItemsOnPage();
         for (int i = 1; i <= j; i++) {
             assertManufacturer(i,expectedManufacturer);
