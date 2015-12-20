@@ -2,18 +2,18 @@
 <suite name="Onliner Test Plan" verbose="1">
 		<test name="CourseProject" preserve-order="true">
 			<classes>
-				<class name="tests.AddToBookmarksTest" />
 				<class name="tests.ArrangeOffersByPriceTest" />
 				<class name="tests.AutoBaraholkaSearchTest" />
-				<class name="tests.ChangePasswordTest" />
 				<class name="tests.CompareItemsTest" />
 				<class name="tests.CurrencyExchangeTest" />
 				<class name="tests.LinksOnTilesTest" />
+				<class name="tests.ChangePasswordTest" />
+				<class name="tests.AddToBookmarksTest" />
 			</classes>
 
 			<parameter name="typeOfLogin" value="text" />
-			<parameter name="passwordPath" value="../src/test/resources/lastpassword.txt" />
 			<parameter name="username" value="andrey_yermolov" />
+			<parameter name="password" value="qwerty792716" />
 			<parameter name="typeOfUserProfileTab" value="password" />
 
 			<parameter name="searchRequest" value="Bosch WLG2426WOE" />

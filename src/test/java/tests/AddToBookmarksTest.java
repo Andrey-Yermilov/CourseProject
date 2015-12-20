@@ -10,7 +10,7 @@ public class AddToBookmarksTest extends BaseTest {
 
     private String typeOfLogin;
     private String username;
-    private String currentPassword;
+    private String password;
     private String bookmarksTab;
     private String mainMenuTab ;
     private String category ;
@@ -18,18 +18,15 @@ public class AddToBookmarksTest extends BaseTest {
     private int itemNumber = 1;
 
     @Test
-    @Parameters({ "typeOfLogin", "username", "passwordPath", "bookmarksTab","mainMenuTab", "category", "sectionForAddToBookmarksTest"})
-    public void readParams(String typeOfLogin, String username, String passwordPath, String bookmarksTab, String mainMenuTab, String category, String sectionForAddToBookmarksTest) throws Throwable{
+    @Parameters({ "typeOfLogin", "username", "password", "bookmarksTab","mainMenuTab", "category", "sectionForAddToBookmarksTest"})
+    public void readParams(String typeOfLogin, String username, String password, String bookmarksTab, String mainMenuTab, String category, String sectionForAddToBookmarksTest) throws Throwable{
         this.typeOfLogin = typeOfLogin;
         this.username = username;
+        this.password = password;
         this.bookmarksTab = bookmarksTab;
         this.mainMenuTab = mainMenuTab;
         this.category = category;
         this.sectionForAddToBookmarksTest = sectionForAddToBookmarksTest;
-        FileInputStream fileInputStream = new FileInputStream(passwordPath);
-        byte[] tmp = new byte[12];
-        fileInputStream.read(tmp);
-        this.currentPassword = new String(tmp);
         xTest();
     }
 
@@ -45,7 +42,7 @@ public class AddToBookmarksTest extends BaseTest {
         logger.step(2);
         mainForm.getLoginMenu().openLoginForm(typeOfLogin);
         LoginForm loginForm = new LoginForm();
-        loginForm.login(username, currentPassword);
+        loginForm.login(username, password);
         mainForm.assertLoggedIn(username);
 
         logger.step(3);

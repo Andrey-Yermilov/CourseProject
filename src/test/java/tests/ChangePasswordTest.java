@@ -17,20 +17,14 @@ public class ChangePasswordTest extends BaseTest {
     private String username;
     private String typeOfLogin;
     private String typeOfUserProfileTab;
-    private String passwordPath;
 
     @Test
-    @Parameters({ "username", "typeOfUserProfileTab","typeOfLogin", "passwordPath"})
-    public void readParams(String username, String typeOfUserProfileTab, String typeOfLogin, String passwordPath) throws Throwable{
+    @Parameters({ "username", "password", "typeOfUserProfileTab","typeOfLogin"})
+    public void readParams(String username, String password, String typeOfUserProfileTab, String typeOfLogin) throws Throwable{
         this.username = username;
+        this.currentPassword = password;
         this.typeOfUserProfileTab = typeOfUserProfileTab;
         this.typeOfLogin = typeOfLogin;
-        this.username = username;
-        this.passwordPath = passwordPath;
-        FileInputStream fileInputStream = new FileInputStream(passwordPath);
-        byte[] tmp = new byte[12];
-        fileInputStream.read(tmp);
-        this.currentPassword = new String(tmp);
         xTest();
     }
 
@@ -65,7 +59,15 @@ public class ChangePasswordTest extends BaseTest {
         logger.step(5);
         loginFormAfterLoginOut.login(username, newPassword);
         mainForm.assertLoggedIn(username);
-        mainForm.writeToFile(newPassword,passwordPath);
+
+        logger.step(6);
+        mainForm.goToProfileForm();
+        profileForm.openEditProfileForm();
+        editProfileForm.openTab(typeOfUserProfileTab);
+        editProfileForm.changePassword(newPassword, currentPassword);
+        mainForm.exit();
+        loginFormAfterLoginOut.login(username, currentPassword);
+        mainForm.assertLoggedIn(username);
     }
 }
 
