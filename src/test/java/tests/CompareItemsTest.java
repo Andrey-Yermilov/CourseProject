@@ -38,7 +38,7 @@ public class CompareItemsTest extends BaseTest {
         SectionForm sectionForm = new SectionForm();
 
         logger.step(3);
-        sectionForm.clearComparisonList();
+        //sectionForm.clearComparisonList();
         sectionForm.addAllItemsToComparisonList();
         List<String> allItemsNames= sectionForm.getAllItemsNames();
 
