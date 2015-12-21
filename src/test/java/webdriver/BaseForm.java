@@ -123,7 +123,7 @@ public abstract class BaseForm extends BaseEntity {
 	 * Ожидание окончания активности jQuery на странице
 	 */
 	public void waitForJQuery() {
-		(new WebDriverWait(browser.getDriver(), 10)).until((ExpectedCondition<Boolean>) new ExpectedCondition<Boolean>() {
+		(new WebDriverWait(browser.getDriver(), 20)).until((ExpectedCondition<Boolean>) new ExpectedCondition<Boolean>() {
 			public Boolean apply(final WebDriver d) {
 				JavascriptExecutor js = (JavascriptExecutor) d;
 				return (Boolean) js.executeScript("return jQuery.active == 0");
