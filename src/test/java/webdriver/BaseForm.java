@@ -132,7 +132,7 @@ public abstract class BaseForm extends BaseEntity {
 	}
 
 	/**
-	 * Переулючиться на фрейм
+	 * Переключиться на фрейм
 	 * @param className имя класса для фрейма
 	 */
 	public void switchToModalFrame(String className) {
